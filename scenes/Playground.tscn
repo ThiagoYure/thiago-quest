@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://84n008bojk3w"]
+[gd_scene load_steps=3 format=3 uid="uid://84n008bojk3w"]
 
 [ext_resource type="PackedScene" uid="uid://cskeek485a1wc" path="res://scenes/Player.tscn" id="1_88rkb"]
+[ext_resource type="PackedScene" uid="uid://b83m10tss7muy" path="res://scenes/Mapa.tscn" id="1_i20g8"]
 
 [node name="Playground" type="Node2D"]
 
+[node name="Mapa" parent="." instance=ExtResource("1_i20g8")]
+
 [node name="Player" parent="." instance=ExtResource("1_88rkb")]
+position = Vector2(1825, 506)

@@ -19,7 +19,12 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=768
+window/size/resizable=false
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://in5t6vmjxp4x"
 
 [input]
 
@@ -53,3 +58,4 @@ move-down={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.051971, 0.051971, 0.0519709, 1)
