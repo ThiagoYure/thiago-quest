@@ -4,8 +4,17 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var last_direction: String = "down"
+var can_move := true
 
-func _process(delta):
+func _ready() -> void:
+	var dialogue_box = get_tree().current_scene.get_node("DialogBox")
+	if dialogue_box:
+		dialogue_box.dialogue_started.connect(_on_dialogue_started)
+		dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
+
+func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
 	move_player(delta)
 
 func move_player(delta):
@@ -48,3 +57,9 @@ func update_animation(direction: Vector2):
 func play_animation(name: String):
 	if animation_player.current_animation != name:
 		animation_player.play(name)
+
+func _on_dialogue_started():
+	can_move = false
+
+func _on_dialogue_finished():
+	can_move = true

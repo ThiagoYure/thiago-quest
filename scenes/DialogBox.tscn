@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3exrn787pboi"]
+
+[ext_resource type="Script" uid="uid://yavexvkvwa1w" path="res://scripts/DialogBox.gd" id="1_bqexh"]
+[ext_resource type="FontFile" uid="uid://in5t6vmjxp4x" path="res://assets/fonts/Pixel Emulator.otf" id="2_0tcfv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lb7il"]
+font = ExtResource("2_0tcfv")
+font_size = 24
+shadow_size = 9
+
+[node name="DialogBox" type="CanvasLayer"]
+script = ExtResource("1_bqexh")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.00913033, 0.0335533, 0.184982, 0.878431)
+z_index = 5
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -485.0
+offset_top = -242.0
+offset_right = 485.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(100, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -469.5
+offset_top = -80.0
+offset_right = 469.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeakerLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Teste"
+label_settings = SubResource("LabelSettings_lb7il")
+
+[node name="TextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Teste de texto"
+fit_content = true
+
+[node name="CharTimer" type="Timer" parent="."]

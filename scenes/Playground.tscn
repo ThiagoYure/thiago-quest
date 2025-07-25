@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://84n008bojk3w"]
+[gd_scene load_steps=5 format=3 uid="uid://84n008bojk3w"]
 
 [ext_resource type="PackedScene" uid="uid://cskeek485a1wc" path="res://scenes/Player.tscn" id="1_88rkb"]
 [ext_resource type="PackedScene" uid="uid://b83m10tss7muy" path="res://scenes/Mapa.tscn" id="1_i20g8"]
+[ext_resource type="PackedScene" uid="uid://cfl4og5ll4c01" path="res://scenes/NPC.tscn" id="3_t01tg"]
+[ext_resource type="PackedScene" uid="uid://b3exrn787pboi" path="res://scenes/DialogBox.tscn" id="4_t01tg"]
 
 [node name="Playground" type="Node2D"]
 
@@ -9,3 +11,9 @@
 
 [node name="Player" parent="." instance=ExtResource("1_88rkb")]
 position = Vector2(1825, 506)
+
+[node name="Npc" parent="." instance=ExtResource("3_t01tg")]
+visibility_layer = 15
+position = Vector2(1224, 447)
+
+[node name="DialogBox" parent="." instance=ExtResource("4_t01tg")]
