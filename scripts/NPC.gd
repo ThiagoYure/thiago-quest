@@ -54,8 +54,24 @@ func _on_question_answered_right(npc_id:String):
 		question_answered = true
 		GameState.get_key_part(npc_id)
 
+func turn_to_player(player_dir: String):
+	if player_dir == "right":
+		$UpperBodySprite.frame_coords = Vector2i(1,2)
+		$LowerBodySprite.frame_coords = Vector2i(1,3)
+	elif player_dir == "left":
+		$UpperBodySprite.frame_coords = Vector2i(1,4)
+		$LowerBodySprite.frame_coords = Vector2i(1,5)
+	elif player_dir == "down":
+		$UpperBodySprite.frame_coords = Vector2i(1,6)
+		$LowerBodySprite.frame_coords = Vector2i(1,7)
+	elif player_dir == "up":
+		$UpperBodySprite.frame_coords = Vector2i(1,0)
+		$LowerBodySprite.frame_coords = Vector2i(1,1)
+
+
 func _process(_delta):
 	if player_in_range and Input.is_action_just_pressed("interact"):
+		turn_to_player(get_tree().current_scene.get_node("Player").get_last_direction())
 		if dialogue_box and not dialogue_active and not dialogue_box.visible:
 			if !question_answered:
 				_load_dialogue("Question_dialogue")

@@ -60,6 +60,11 @@ func play_animation(name: String):
 
 func _on_dialogue_started():
 	can_move = false
+	animation_player.stop()
 
 func _on_dialogue_finished():
 	can_move = true
+	animation_player.play("idle_" + last_direction)
+
+func get_last_direction():
+	return last_direction

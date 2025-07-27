@@ -8,6 +8,10 @@ var lines : Array = []
 var is_typing := false
 var can_continue := false
 var is_dialogue_active:= false
+var current_choice_index:=0
+var buttons: Array = []
+var choices_list: Array = []
+var question_line:={}
 signal dialogue_started
 signal dialogue_finished
 signal question_answered_right(npc_id: String)
@@ -22,6 +26,9 @@ func _ready():
 	char_timer.timeout.connect(_on_char_timer_timeout)
 
 func show_dialogue(dialogue_data : Array):
+	buttons.clear()
+	choices_list.clear()
+	question_line = {}
 	lines = dialogue_data.duplicate()
 	show()
 	for item in choice_container.get_children():
@@ -61,7 +68,11 @@ func _next_line():
 			button.text = choice
 			button.pressed.connect(_on_choice_selected.bind(choice, line))
 			choice_container.add_child(button)
+			buttons.append(button)
+			choices_list.append(choice)
+			question_line = line
 			is_typing = false
+		att_choices()
 
 func _on_char_timer_timeout():
 	if char_index < current_text.length():
@@ -75,7 +86,7 @@ func _on_char_timer_timeout():
 		can_continue = true
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and buttons.size() == 0:
 		if is_typing:
 			char_timer.stop()
 			text_label.clear()
@@ -85,6 +96,28 @@ func _unhandled_input(event):
 		elif can_continue:
 			can_continue = false
 			_next_line()
+	elif event.is_action_pressed("ui_accept") and buttons.size() > 0:
+		_on_choice_selected(choices_list[current_choice_index], question_line)
+		buttons.clear()
+		choices_list.clear()
+		question_line={}
+	elif buttons.size() > 0 and is_dialogue_active and (event.is_action_pressed("move-down") or event.is_action_pressed("move-up")):
+		if(event.is_action_pressed("move-down")):
+			if current_choice_index == (buttons.size() - 1):
+				current_choice_index = 0
+			else: current_choice_index += 1
+			att_choices()
+		elif(event.is_action_pressed("move-up")):
+			if current_choice_index == 0:
+				current_choice_index = (buttons.size() - 1)
+			else: current_choice_index -= 1
+			att_choices()
+
+func att_choices():
+	for i in buttons.size():
+		if i == current_choice_index :
+			buttons[i].modulate = Color.YELLOW
+		else: buttons[i].modulate = Color.WHITE
 
 func _on_choice_selected(choice, line):
 	choice_container.visible = false

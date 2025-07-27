@@ -7,7 +7,7 @@
 size = Vector2(21, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktgr7"]
-size = Vector2(51, 55)
+size = Vector2(28, 24)
 
 [node name="Npc" type="CharacterBody2D"]
 z_index = 2
@@ -42,4 +42,5 @@ shape = SubResource("RectangleShape2D_6xvi5")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ktgr7")
