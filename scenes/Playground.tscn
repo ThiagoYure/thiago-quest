@@ -1,19 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://84n008bojk3w"]
+[gd_scene load_steps=8 format=3 uid="uid://84n008bojk3w"]
 
 [ext_resource type="PackedScene" uid="uid://cskeek485a1wc" path="res://scenes/Player.tscn" id="1_88rkb"]
 [ext_resource type="PackedScene" uid="uid://b83m10tss7muy" path="res://scenes/Mapa.tscn" id="1_i20g8"]
 [ext_resource type="PackedScene" uid="uid://cfl4og5ll4c01" path="res://scenes/NPC.tscn" id="3_t01tg"]
 [ext_resource type="PackedScene" uid="uid://b3exrn787pboi" path="res://scenes/DialogBox.tscn" id="4_t01tg"]
+[ext_resource type="Texture2D" uid="uid://bneeqyn31hjod" path="res://assets/NPC/Soldier/Soldier 01-1.png" id="5_gv6bp"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_soldado1_dialogue.json" id="5_pewrh"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_soldado2_dialogue.json" id="7_070rk"]
 
 [node name="Playground" type="Node2D"]
 
 [node name="Mapa" parent="." instance=ExtResource("1_i20g8")]
+position = Vector2(0, -12)
 
 [node name="Player" parent="." instance=ExtResource("1_88rkb")]
 position = Vector2(1825, 506)
 
-[node name="Npc" parent="." instance=ExtResource("3_t01tg")]
-visibility_layer = 15
-position = Vector2(1224, 447)
-
 [node name="DialogBox" parent="." instance=ExtResource("4_t01tg")]
+
+[node name="Npc2" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(1642, 433)
+dialogue_file = ExtResource("5_pewrh")
+npc_name = "Soldado"
+id = "Soldado"
+textureHead = ExtResource("5_gv6bp")
+textureBody = ExtResource("5_gv6bp")
+
+[node name="Npc3" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(1423, 434)
+dialogue_file = ExtResource("7_070rk")
+npc_name = "Novo Soldado"
+id = "Novo Soldado"
+textureHead = ExtResource("5_gv6bp")
+textureBody = ExtResource("5_gv6bp")

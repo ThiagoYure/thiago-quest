@@ -10,10 +10,12 @@ var can_continue := false
 var is_dialogue_active:= false
 signal dialogue_started
 signal dialogue_finished
+signal question_answered_right(npc_id: String)
 
 @onready var speaker_label = $Panel/VBoxContainer/SpeakerLabel
 @onready var text_label = $Panel/VBoxContainer/TextLabel
 @onready var char_timer = $CharTimer
+@onready var choice_container = $Panel/VBoxContainer/ChoiceContainer
 
 func _ready():
 	hide()
@@ -22,6 +24,8 @@ func _ready():
 func show_dialogue(dialogue_data : Array):
 	lines = dialogue_data.duplicate()
 	show()
+	for item in choice_container.get_children():
+		item.queue_free()
 	emit_signal("dialogue_started")
 	is_dialogue_active = true
 	_next_line()
@@ -33,14 +37,31 @@ func _next_line():
 		emit_signal("dialogue_finished") # <-- avisa que terminou
 		return
 	var line = lines.pop_front()
-	speaker_label.text = line.get("speaker", "")
-	current_text = line.get("text", "")
-	displayed_text = ""
-	char_index = 0
-	text_label.clear()
-	text_label.append_text(current_text)
-	is_typing = true
-	char_timer.start(char_speed)
+	
+	if line.get("type") == "text":
+		speaker_label.text = line.get("speaker_name", "")
+		current_text = line.get("text", "")
+		displayed_text = ""
+		char_index = 0
+		text_label.clear()
+		text_label.append_text(current_text)
+		is_typing = true
+		char_timer.start(char_speed)
+	elif line.get("type") == "question":
+		speaker_label.text = line.get("speaker_name", "")
+		current_text = line.get("question", "")
+		displayed_text = ""
+		char_index = 0
+		is_typing = true
+		char_timer.start(char_speed)
+		var choices : Array = line.get("options")
+		choice_container.visible = true
+		for choice in choices:
+			var button = Button.new()
+			button.text = choice
+			button.pressed.connect(_on_choice_selected.bind(choice, line))
+			choice_container.add_child(button)
+			is_typing = false
 
 func _on_char_timer_timeout():
 	if char_index < current_text.length():
@@ -56,7 +77,6 @@ func _on_char_timer_timeout():
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		if is_typing:
-			# Mostra tudo de uma vez
 			char_timer.stop()
 			text_label.clear()
 			text_label.append_text(current_text)
@@ -65,3 +85,14 @@ func _unhandled_input(event):
 		elif can_continue:
 			can_continue = false
 			_next_line()
+
+func _on_choice_selected(choice, line):
+	choice_container.visible = false
+	var correct_answer = line.get("correct_answer")
+	if choice == correct_answer:
+		lines.push_front(line.get("if_right"))
+		emit_signal("question_answered_right", line.get("npc_id"))
+		_next_line()
+	else : 
+		lines.push_front(line.get("if_wrong"))
+		_next_line()

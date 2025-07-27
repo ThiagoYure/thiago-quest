@@ -54,4 +54,8 @@ bbcode_enabled = true
 text = "Teste de texto"
 fit_content = true
 
+[node name="ChoiceContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+
 [node name="CharTimer" type="Timer" parent="."]

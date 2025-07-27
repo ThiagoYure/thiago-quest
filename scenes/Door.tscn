@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5a51rfdcv6lu"]
+
+[ext_resource type="Script" uid="uid://b23ykbo6wu5v6" path="res://scripts/Door.gd" id="1_eyv6f"]
+[ext_resource type="Texture2D" uid="uid://bv0b1hg16yvi4" path="res://assets/map/32.png" id="1_yfgsh"]
+[ext_resource type="JSON" path="res://assets/dialogues/door_dialogue.json" id="2_mg2as"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfgsh"]
+size = Vector2(32, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyv6f"]
+size = Vector2(32, 24)
+
+[node name="Door" type="StaticBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_eyv6f")
+dialogue_file = ExtResource("2_mg2as")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yfgsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_yfgsh")
+
+[node name="InteractiveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractiveArea"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_eyv6f")
