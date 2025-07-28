@@ -29,6 +29,7 @@ func show_dialogue(dialogue_data : Array):
 	buttons.clear()
 	choices_list.clear()
 	question_line = {}
+	current_choice_index = 0
 	lines = dialogue_data.duplicate()
 	show()
 	for item in choice_container.get_children():

@@ -1,12 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://84n008bojk3w"]
+[gd_scene load_steps=21 format=3 uid="uid://84n008bojk3w"]
 
 [ext_resource type="PackedScene" uid="uid://cskeek485a1wc" path="res://scenes/Player.tscn" id="1_88rkb"]
 [ext_resource type="PackedScene" uid="uid://b83m10tss7muy" path="res://scenes/Mapa.tscn" id="1_i20g8"]
 [ext_resource type="PackedScene" uid="uid://cfl4og5ll4c01" path="res://scenes/NPC.tscn" id="3_t01tg"]
 [ext_resource type="PackedScene" uid="uid://b3exrn787pboi" path="res://scenes/DialogBox.tscn" id="4_t01tg"]
 [ext_resource type="Texture2D" uid="uid://bneeqyn31hjod" path="res://assets/NPC/Soldier/Soldier 01-1.png" id="5_gv6bp"]
-[ext_resource type="JSON" path="res://assets/dialogues/npc_soldado1_dialogue.json" id="5_pewrh"]
-[ext_resource type="JSON" path="res://assets/dialogues/npc_soldado2_dialogue.json" id="7_070rk"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_1_dialogue.json" id="5_pewrh"]
+[ext_resource type="Texture2D" uid="uid://waqblvpij7aa" path="res://assets/NPC/Soldier/Soldier 06-4.png" id="6_070rk"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_2_dialogue.json" id="7_h8tnp"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_3_dialogue.json" id="9_ak4i2"]
+[ext_resource type="Texture2D" uid="uid://dktwekgmj1gmj" path="res://assets/NPC/Male 02-3.png" id="10_qeo6q"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_4_dialogue.json" id="11_7akvu"]
+[ext_resource type="Texture2D" uid="uid://b782ikghy51qa" path="res://assets/NPC/Male 05-2.png" id="12_kn68e"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_5_dialogue.json" id="13_dp8tf"]
+[ext_resource type="Texture2D" uid="uid://fal6lmgfkaju" path="res://assets/NPC/Female 02-3.png" id="14_800qj"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_6_dialogue.json" id="15_dp8tf"]
+[ext_resource type="Texture2D" uid="uid://diyfvkrt4i8bf" path="res://assets/NPC/Male 07-1.png" id="16_800qj"]
+[ext_resource type="Texture2D" uid="uid://tvo27k6qe3ja" path="res://assets/NPC/Cat-01-2r.png" id="17_800qj"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_7_dialogue_Cat.json" id="17_g8yjl"]
+[ext_resource type="JSON" path="res://assets/dialogues/npc_8_dialogue_General.json" id="19_g6k12"]
+[ext_resource type="Texture2D" uid="uid://1cq5sebifm7f" path="res://assets/NPC/Soldier 07-1.png" id="20_7hul1"]
 
 [node name="Playground" type="Node2D"]
 
@@ -14,22 +27,78 @@
 position = Vector2(0, -12)
 
 [node name="Player" parent="." instance=ExtResource("1_88rkb")]
-position = Vector2(1825, 506)
+position = Vector2(1824, 523)
 
 [node name="DialogBox" parent="." instance=ExtResource("4_t01tg")]
 
-[node name="Npc2" parent="." instance=ExtResource("3_t01tg")]
-position = Vector2(1642, 433)
+[node name="Npc" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(1568, 435)
+motion_mode = 1
 dialogue_file = ExtResource("5_pewrh")
-npc_name = "Soldado"
-id = "Soldado"
+npc_name = "Guarda da entrada"
+id = "Guarda da entrada"
+textureHead = ExtResource("6_070rk")
+textureBody = ExtResource("6_070rk")
+
+[node name="Npc2" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(798, 83)
+motion_mode = 1
+dialogue_file = ExtResource("7_h8tnp")
+npc_name = "Soldado Comum"
+id = "Soldado Comum"
 textureHead = ExtResource("5_gv6bp")
 textureBody = ExtResource("5_gv6bp")
 
 [node name="Npc3" parent="." instance=ExtResource("3_t01tg")]
-position = Vector2(1423, 434)
-dialogue_file = ExtResource("7_070rk")
-npc_name = "Novo Soldado"
-id = "Novo Soldado"
-textureHead = ExtResource("5_gv6bp")
-textureBody = ExtResource("5_gv6bp")
+position = Vector2(640, 718)
+motion_mode = 1
+dialogue_file = ExtResource("9_ak4i2")
+npc_name = "Soldado Popular"
+id = "Soldado Popular"
+textureHead = ExtResource("10_qeo6q")
+textureBody = ExtResource("10_qeo6q")
+
+[node name="Npc4" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(239, 652)
+motion_mode = 1
+dialogue_file = ExtResource("11_7akvu")
+npc_name = "Sacerdote Junior"
+id = "Sacerdote Junior"
+textureHead = ExtResource("12_kn68e")
+textureBody = ExtResource("12_kn68e")
+
+[node name="Npc5" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(15, 417)
+motion_mode = 1
+dialogue_file = ExtResource("13_dp8tf")
+npc_name = "Soldada Comum"
+id = "Soldada Comum"
+textureHead = ExtResource("14_800qj")
+textureBody = ExtResource("14_800qj")
+
+[node name="Npc6" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(207, -106)
+motion_mode = 1
+dialogue_file = ExtResource("15_dp8tf")
+npc_name = "Sacerdote Senior"
+id = "Sacerdote Senior"
+textureHead = ExtResource("16_800qj")
+textureBody = ExtResource("16_800qj")
+
+[node name="Npc7" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(302, 199)
+motion_mode = 1
+dialogue_file = ExtResource("17_g8yjl")
+npc_name = "A gata"
+id = "A gata"
+textureHead = ExtResource("17_800qj")
+textureBody = ExtResource("17_800qj")
+
+[node name="Npc8" parent="." instance=ExtResource("3_t01tg")]
+position = Vector2(511, -704)
+motion_mode = 1
+dialogue_file = ExtResource("19_g6k12")
+npc_name = "O General"
+id = "O General"
+textureHead = ExtResource("20_7hul1")
+textureBody = ExtResource("20_7hul1")

@@ -1,0 +1,58 @@
+{
+	"Question_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Soldada Comum",
+			"text": "Recruta! A quanto tempo. Lembra que eu te peguei no colo quando era bebê?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Claro... Lembro sim. Uhum. Deixa eu te perguntar. Por acaso você não teria uma chave para me emprestar? Preciso falar com o general."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Soldada Comum",
+			"text": "Hm... Por acaso eu tenho sim. Mas se você quiser, vai ter que me responder uma coisa..."
+		},
+		{
+			"npc_id": "Soldada Comum",
+			"type": "question",
+			"speaker_name": "Soldada Comum",
+			"question": "Por que o dragão atravessou o reino?",
+			"options": [
+				"Para visitar a família.",
+				"Para chegar ao outro reino.",
+				"Um dragão?! Onde?!"
+			],
+			"correct_answer": "Para chegar ao outro reino.",
+			"if_right": {
+				"type": "text",
+				"speaker_name": "Soldada Comum",
+				"text": "Você é mesmo inteligente. Tá aqui a chave..."
+			},
+			"if_wrong": {
+				"type": "text",
+				"speaker_name": "Soldada Comum",
+				"text": "Errou cabeção. Quem sabe na próxima."
+			}
+		}
+	],
+	"Default_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Soldada Comum",
+			"text": "E aí recruta! Está perdido?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Talvez..."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Soldada Comum",
+			"text": "Ah, então vou te ajudar. A sala do general é aquela com uma porta enorme."
+		}
+	]
+}

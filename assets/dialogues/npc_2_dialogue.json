@@ -1,0 +1,63 @@
+{
+	"Question_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Soldado Comum",
+			"text": "O que você quer recruta? Tem que ser muito importante para interromper meu descanso..."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Tenho que falar com o general, ordens do rei."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Soldado Comum",
+			"text": "Já entendi, então você quer minha chave, é isso?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Sim... Por favor..."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Soldado Comum",
+			"text": "Então me responde só uma coisa que eu te dou a chave."
+		},
+		{
+			"npc_id": "Soldado Comum",
+			"type": "question",
+			"speaker_name": "Soldado Comum",
+			"question": "O que é pior do que acordar cedo?",
+			"options": [
+				"Dormir em uma cama desconfortável.",
+				"Perder o café.",
+				"Ter que falar com um recruta sem tomar café e ainda ter que acordar cedo."
+			],
+			"correct_answer": "Ter que falar com um recruta sem tomar café e ainda ter que acordar cedo.",
+			"if_right": {
+				"type": "text",
+				"speaker_name": "Soldado Comum",
+				"text": "Muito bem... Agora pega essa chave e me deixa dormir..."
+			},
+			"if_wrong": {
+				"type": "text",
+				"speaker_name": "Soldado Comum",
+				"text": "Resposta errada. Tem gente que não se toca mesmo..."
+			}
+		}
+	],
+	"Default_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Soldado Comum",
+			"text": "Vai embora... Zzzzzzzzzzzzzzzzzzz"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "..."
+		}
+	]
+}

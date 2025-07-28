@@ -1,0 +1,58 @@
+{
+	"Question_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Soldado Popular",
+			"text": "Para quem é o autógrafo?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Na verdade eu só quero a sua chave. Preciso falar com o general."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Soldado Popular",
+			"text": "Então saiba que outras pessoas lutariam para ter uma foto autografada minha."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Hoje eu só quero a chave mesmo, desculpa."
+		},
+		{
+			"npc_id": "Soldado Popular",
+			"type": "question",
+			"speaker_name": "Soldado Popular",
+			"question": "Eu só preciso saber uma coisa antes. Quem é o mais bonito de todo o castelo?",
+			"options": [
+				"O Soldado Popular.",
+				"O Soldado Popular.",
+				"O Soldado Popular."
+			],
+			"correct_answer": "O Soldado Popular.",
+			"if_right": {
+				"type": "text",
+				"speaker_name": "Soldado Popular",
+				"text": "Ah, você está sendo gentil... Tudo bem, eu aceito o elogio. Tome a chave e essa foto autografada de brinde."
+			},
+			"if_wrong": {
+				"type": "text",
+				"speaker_name": "Soldado Popular",
+				"text": "Essa era impossível de errar"
+			}
+		}
+	],
+	"Default_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Soldado Popular",
+			"text": "Se você veio pedir outra foto autografada, elas acabaram. Só sobraram os bonequinhos."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Que pena... Eu volto outro dia."
+		}
+	]
+}

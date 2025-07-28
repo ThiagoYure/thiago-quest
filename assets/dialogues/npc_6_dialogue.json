@@ -1,0 +1,68 @@
+{
+	"Question_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Sacerdote Senior",
+			"text": "Olá, meu jovem. A que devo essa inesperada visita ao santuário?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Me desculpe incomodá-lo senhor, mas preciso de uma chave."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Sacerdote Senior",
+			"text": "Entendo, está em uma missão? Mas será que é a pessoa certa para essa missão?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Como posso descobrir se sou a pessoa certa?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Sacerdote Senior",
+			"text": "Olhe para dentro de si e me responda isto."
+		},
+		{
+			"npc_id": "Sacerdote Senior",
+			"type": "question",
+			"speaker_name": "Sacerdote Senior",
+			"question": "O que você considera mais importante?",
+			"options": [
+				"Fazer o que é certo mesmo em meio ao caos.",
+				"Ser reconhecido por grandes feitos.",
+				"Ser rico e famoso."
+			],
+			"correct_answer": "Fazer o que é certo mesmo em meio ao caos.",
+			"if_right": {
+				"type": "text",
+				"speaker_name": "Sacerdote Senior",
+				"text": "Você é a pessoa certa. Pegue esta chave e siga seu caminho."
+			},
+			"if_wrong": {
+				"type": "text",
+				"speaker_name": "Sacerdote Senior",
+				"text": "Talvez você não seja a pessoa certa. Reflita um pouco."
+			}
+		}
+	],
+	"Default_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "Sacerdote Senior",
+			"text": "Chegou ao fim da sua missão?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "Estou quase lá."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Sacerdote Senior",
+			"text": "Ótimo. Mande lembranças ao general por mim."
+		}
+	]
+}

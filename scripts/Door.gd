@@ -41,7 +41,7 @@ func _on_body_exited(body):
 
 func _process(_delta):
 	if player_in_range and Input.is_action_just_pressed("interact"):
-		if GameState.key_parts == 2 :
+		if GameState.key_parts == 7 :
 			queue_free()
 		elif dialogue_box and not dialogue_active and not dialogue_box.visible:
 			_load_dialogue("Default_dialogue")

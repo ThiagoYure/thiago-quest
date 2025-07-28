@@ -1,0 +1,48 @@
+{
+	"Question_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "A gata",
+			"text": "Miau miau miau."
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "iti gatinha! Me dê essa chave, por favor."
+		},
+		{
+			"npc_id": "A gata",
+			"type": "question",
+			"speaker_name": "A gata",
+			"question": "Miau miau miau miau miau?",
+			"options": [
+				"pspspspspsps.",
+				"pspspspspsps.",
+				"pspspspspsps."
+			],
+			"correct_answer": "pspspspspsps.",
+			"if_right": {
+				"type": "text",
+				"speaker_name": "A gata",
+				"text": "Miaaaaaauuuu!"
+			},
+			"if_wrong": {
+				"type": "text",
+				"speaker_name": "A gata",
+				"text": "Miau..."
+			}
+		}
+	],
+	"Default_dialogue": [
+		{
+			"type": "text",
+			"speaker_name": "A gata",
+			"text": "Miau?"
+		},
+		{
+			"type": "text",
+			"speaker_name": "Você",
+			"text": "pspsps!"
+		}
+	]
+}
