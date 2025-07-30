@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://4hubj7s2pjk5"]
+
+[ext_resource type="Texture2D" uid="uid://bs2xm378yc0pg" path="res://assets/map/B32x32.png" id="1_8kegs"]
+[ext_resource type="Script" uid="uid://0162rth1tbyf" path="res://scripts/Statue.gd" id="1_w0wxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0wxf"]
+size = Vector2(44, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kegs"]
+size = Vector2(61, 43)
+
+[node name="Statue" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_w0wxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8kegs")
+region_enabled = true
+region_rect = Rect2(122.03, 367.94, 43.7057, 80.4999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 27)
+shape = SubResource("RectangleShape2D_w0wxf")
+
+[node name="InteractiveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea"]
+z_index = 1
+z_as_relative = false
+position = Vector2(0, 26.5)
+shape = SubResource("RectangleShape2D_8kegs")

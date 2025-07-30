@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5a51rfdcv6lu"]
+[gd_scene load_steps=5 format=3 uid="uid://b5a51rfdcv6lu"]
 
 [ext_resource type="Script" uid="uid://b23ykbo6wu5v6" path="res://scripts/Door.gd" id="1_eyv6f"]
 [ext_resource type="Texture2D" uid="uid://bv0b1hg16yvi4" path="res://assets/map/32.png" id="1_yfgsh"]
-[ext_resource type="JSON" path="res://assets/dialogues/door_dialogue.json" id="2_mg2as"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfgsh"]
 size = Vector2(32, 10)
@@ -15,7 +14,15 @@ scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 31
 script = ExtResource("1_eyv6f")
-dialogue_file = ExtResource("2_mg2as")
+dialogue_file = "{
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Mensagem na porta\",
+			\"text\": \"Você não possui a chave. Talvez as outras pessoas do castelo possam ajudá-lo.\"
+		}
+	]
+}"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yfgsh")

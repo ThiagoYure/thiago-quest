@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1jkws8mgde10"]
+
+[ext_resource type="Script" uid="uid://m71e34be4pna" path="res://scripts/HUD.gd" id="1_fls4u"]
+[ext_resource type="Texture2D" uid="uid://dmci4kwoojb2k" path="res://assets/UI/Map01.png" id="1_qpvh6"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_fls4u")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.436
+anchor_right = 0.5
+anchor_bottom = 0.46
+offset_left = 379.0
+offset_top = -288.848
+offset_right = 597.0
+offset_bottom = -270.28
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(-7, 19)
+scale = Vector2(2.83333, 2.83333)
+texture = ExtResource("1_qpvh6")
+region_enabled = true
+region_rect = Rect2(72.97, 299.949, 17.0281, 8.93185)
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "Chaves: X 0/7"
+horizontal_alignment = 1
+vertical_alignment = 1

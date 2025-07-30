@@ -1,6 +1,7 @@
 extends StaticBody2D
 
-@export var dialogue_file : Resource
+@export_multiline var dialogue_file : String
+var dialogue_dict: Dictionary
 var dialogue_lines: Array
 var dialogue_active := false
 var player_in_range := false
@@ -10,23 +11,22 @@ var player_in_range := false
 func _ready() -> void:
 	$InteractiveArea.body_entered.connect(_on_body_entered)
 	$InteractiveArea.body_exited.connect(_on_body_exited)
-	
+	_parse_dialogue()
 	_load_dialogue("Default_dialogue")
 	
 	var dialogue_box = get_tree().current_scene.get_node("DialogBox")
 	if dialogue_box:
 		dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 
+func _parse_dialogue():
+	var parsed = JSON.parse_string(dialogue_file)
+	if parsed is Dictionary:
+		dialogue_dict = parsed
+	else:
+		push_error("Erro ao converter JSON. Verifique a sintaxe.")
+
 func _load_dialogue(type: String):
-	if dialogue_file:
-		var file = FileAccess.open(dialogue_file.resource_path, FileAccess.READ)
-		if file == null:
-			push_error("Não foi possível abrir: " + dialogue_file.resource_path)
-		else :
-			var content = file.get_as_text()
-			file.close()
-			var parsed = JSON.parse_string(content)
-			dialogue_lines = parsed.get(type)
+	dialogue_lines = dialogue_dict.get(type, [])
 
 func _on_dialogue_finished():
 	dialogue_active = false

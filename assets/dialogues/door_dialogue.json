@@ -1,9 +1,0 @@
-{
-	"Default_dialogue": [
-		{
-			"type": "text",
-			"speaker_name": "Mensagem na porta",
-			"text": "Você não possui a chave. Talvez as outras pessoas do castelo possam ajudá-lo."
-		}
-	]
-}

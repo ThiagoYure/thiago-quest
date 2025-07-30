@@ -1,0 +1,599 @@
+[gd_scene load_steps=15 format=3 uid="uid://84n008bojk3w"]
+
+[ext_resource type="PackedScene" uid="uid://b83m10tss7muy" path="res://scenes/Mapa.tscn" id="1_dwmkc"]
+[ext_resource type="PackedScene" uid="uid://cskeek485a1wc" path="res://scenes/Player.tscn" id="2_30fn3"]
+[ext_resource type="PackedScene" uid="uid://b3exrn787pboi" path="res://scenes/DialogBox.tscn" id="3_dgldv"]
+[ext_resource type="PackedScene" uid="uid://cfl4og5ll4c01" path="res://scenes/NPC.tscn" id="4_rm3lh"]
+[ext_resource type="Texture2D" uid="uid://waqblvpij7aa" path="res://assets/NPC/Soldier/Soldier 06-4.png" id="6_jgbtq"]
+[ext_resource type="Texture2D" uid="uid://bneeqyn31hjod" path="res://assets/NPC/Soldier/Soldier 01-1.png" id="8_lawxi"]
+[ext_resource type="Texture2D" uid="uid://dktwekgmj1gmj" path="res://assets/NPC/Male 02-3.png" id="10_aqlsr"]
+[ext_resource type="Texture2D" uid="uid://b782ikghy51qa" path="res://assets/NPC/Male 05-2.png" id="12_128ka"]
+[ext_resource type="Texture2D" uid="uid://fal6lmgfkaju" path="res://assets/NPC/Female 02-3.png" id="14_b64vv"]
+[ext_resource type="Texture2D" uid="uid://diyfvkrt4i8bf" path="res://assets/NPC/Male 07-1.png" id="16_2pad8"]
+[ext_resource type="Texture2D" uid="uid://tvo27k6qe3ja" path="res://assets/NPC/Cat-01-2r.png" id="18_x70b3"]
+[ext_resource type="Texture2D" uid="uid://1cq5sebifm7f" path="res://assets/NPC/Soldier 07-1.png" id="20_1bdwf"]
+[ext_resource type="PackedScene" uid="uid://c8ov0unx3uohn" path="res://scenes/NotificationBox.tscn" id="21_30fn3"]
+[ext_resource type="PackedScene" uid="uid://d1jkws8mgde10" path="res://scenes/HUD.tscn" id="22_dgldv"]
+
+[node name="World" type="Node2D"]
+
+[node name="Mapa" parent="." instance=ExtResource("1_dwmkc")]
+position = Vector2(0, -12)
+
+[node name="Player" parent="." instance=ExtResource("2_30fn3")]
+position = Vector2(1824, 523)
+
+[node name="DialogBox" parent="." instance=ExtResource("3_dgldv")]
+
+[node name="Npc" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(1568, 435)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"text\": \"Olá recruta, porque não está na sua patrulha?\"
+		},
+        {
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Preciso falar com o General. O rei solicitou o CURRÍCULO DE HONRAS do lendário guerreiro Thiago Yure. Como posso encontrá-lo?\"
+		},
+        {
+			\"type\": \"text\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"text\": \"Hm... Nesse caso você precisa ir até o salão Norte. Ele fica trancado por segurança, mas se conseguir reunir 7 chaves, poderá entrar.\"
+		},
+        {
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"E como eu consigo as chaves?\"
+		},
+        {
+			\"type\": \"text\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"text\": \"Cada morador deste castelo possui uma chave. Fale com eles e veja se consegue todas.\"
+		},
+        {
+			\"type\": \"text\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"text\": \"E para mostrar minha boa vontade, vou ajudá-lo lhe dando a primeira chave, mas só se você responder corretamente.\"
+		},
+        {
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Tudo bem, estou pronto.\"
+		},
+		{
+			\"npc_id\": \"Guarda da entrada\",
+			\"type\": \"question\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"question\": \"Um camponês tem 3 maçãs. Ele dá 1 para o ferreiro e outra para o mago. O que ele tem agora?\",
+			\"options\": [
+				\"Um motivo para abrir uma startup de maçãs.\",
+				\"Um problema de lógica para resolver.\",
+				\"Dois amigos e uma maçã.\"
+			],
+			\"correct_answer\": \"Dois amigos e uma maçã.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Guarda da entrada\",
+				\"text\": \"Hahaha. Muito bem, é isso mesmo. E como prova da minha amizade, pegue a primeira chave! Boa sorte!\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Guarda da entrada\",
+				\"text\": \"Resposta errada. Quem sabe outra hora...\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"text\": \"E aí recruta! Como anda a caça as chaves?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Estou quase lá.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Guarda da entrada\",
+			\"text\": \"Ótimo. Ei, você encontrou um gato preto por aí? Acho que ele roubou uma das chaves.\"
+		}
+	]
+}"
+npc_name = "Guarda da entrada"
+id = "Guarda da entrada"
+textureHead = ExtResource("6_jgbtq")
+textureBody = ExtResource("6_jgbtq")
+
+[node name="Npc2" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(798, 83)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Comum\",
+			\"text\": \"O que você quer recruta? Tem que ser muito importante para interromper meu descanso...\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Tenho que falar com o general, ordens do rei.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Comum\",
+			\"text\": \"Já entendi, então você quer minha chave, é isso?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Sim... Por favor...\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Comum\",
+			\"text\": \"Então me responde só uma coisa que eu te dou a chave.\"
+		},
+		{
+			\"npc_id\": \"Soldado Comum\",
+			\"type\": \"question\",
+			\"speaker_name\": \"Soldado Comum\",
+			\"question\": \"O que é pior do que acordar cedo?\",
+			\"options\": [
+				\"Dormir em uma cama desconfortável.\",
+				\"Perder o café.\",
+				\"Ter que falar com um recruta sem tomar café e ainda ter que acordar cedo.\"
+			],
+			\"correct_answer\": \"Ter que falar com um recruta sem tomar café e ainda ter que acordar cedo.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Soldado Comum\",
+				\"text\": \"Muito bem... Agora pega essa chave e me deixa dormir...\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Soldado Comum\",
+				\"text\": \"Resposta errada. Tem gente que não se toca mesmo...\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Comum\",
+			\"text\": \"Vai embora... Zzzzzzzzzzzzzzzzzzz\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"...\"
+		}
+	]
+}"
+npc_name = "Soldado Comum"
+id = "Soldado Comum"
+textureHead = ExtResource("8_lawxi")
+textureBody = ExtResource("8_lawxi")
+
+[node name="Npc3" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(640, 718)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Popular\",
+			\"text\": \"Para quem é o autógrafo?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Na verdade eu só quero a sua chave. Preciso falar com o general.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Popular\",
+			\"text\": \"Então saiba que outras pessoas lutariam para ter uma foto autografada minha.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Hoje eu só quero a chave mesmo, desculpa.\"
+		},
+		{
+			\"npc_id\": \"Soldado Popular\",
+			\"type\": \"question\",
+			\"speaker_name\": \"Soldado Popular\",
+			\"question\": \"Eu só preciso saber uma coisa antes. Quem é o mais bonito de todo o castelo?\",
+			\"options\": [
+				\"O Soldado Popular.\",
+				\"O Soldado Popular.\",
+				\"O Soldado Popular.\"
+			],
+			\"correct_answer\": \"O Soldado Popular.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Soldado Popular\",
+				\"text\": \"Ah, você está sendo gentil... Tudo bem, eu aceito o elogio. Tome a chave e essa foto autografada de brinde.\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Soldado Popular\",
+				\"text\": \"Essa era impossível de errar\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldado Popular\",
+			\"text\": \"Se você veio pedir outra foto autografada, elas acabaram. Só sobraram os bonequinhos.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Que pena... Eu volto outro dia.\"
+		}
+	]
+}"
+npc_name = "Soldado Popular"
+id = "Soldado Popular"
+textureHead = ExtResource("10_aqlsr")
+textureBody = ExtResource("10_aqlsr")
+
+[node name="Npc4" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(239, 652)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Junior\",
+			\"text\": \"Seja bem-vindo recruta. Como posso ajudá-lo hoje? Veio rezar?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Hoje não. Hoje eu preciso da chave que você tem aí. Preciso falar com o general.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Junior\",
+			\"text\": \"O caminho para um propósito pode ser... Hã... Reto? Curvo? Bem, é cheio de curvas não é? Mas também é cheio de luz, então responda-me.\"
+		},
+		{
+			\"npc_id\": \"Sacerdote Junior\",
+			\"type\": \"question\",
+			\"speaker_name\": \"Sacerdote Junior\",
+			\"question\": \"Qual a luz mais poderosa de todas?\",
+			\"options\": [
+				\"A fé.\",
+				\"A do farol.\",
+				\"A luz refletida na minha lâmina.\"
+			],
+			\"correct_answer\": \"A fé.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Sacerdote Junior\",
+				\"text\": \"Brilhante resposta! Pegue esta chave e não deixe o sacerdote sênior saber.\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Sacerdote Junior\",
+				\"text\": \"Incorreto. Você ainda tem muito o que aprender...\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Junior\",
+			\"text\": \"Olá recruta, busca por mais iluminação?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Estou procurando um gato. Sabe onde ele está?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Junior\",
+			\"text\": \"Quase sempre ele está nas proximidades do salão sacerdotal.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Obrigado,, vou procurar lá.\"
+		}
+	]
+}"
+npc_name = "Sacerdote Junior"
+id = "Sacerdote Junior"
+textureHead = ExtResource("12_128ka")
+textureBody = ExtResource("12_128ka")
+
+[node name="Npc5" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(15, 417)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldada Comum\",
+			\"text\": \"Recruta! A quanto tempo. Lembra que eu te peguei no colo quando era bebê?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Claro... Lembro sim. Uhum. Deixa eu te perguntar. Por acaso você não teria uma chave para me emprestar? Preciso falar com o general.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldada Comum\",
+			\"text\": \"Hm... Por acaso eu tenho sim. Mas se você quiser, vai ter que me responder uma coisa...\"
+		},
+		{
+			\"npc_id\": \"Soldada Comum\",
+			\"type\": \"question\",
+			\"speaker_name\": \"Soldada Comum\",
+			\"question\": \"Por que o dragão atravessou o reino?\",
+			\"options\": [
+				\"Para visitar a família.\",
+				\"Para chegar ao outro reino.\",
+				\"Um dragão?! Onde?!\"
+			],
+			\"correct_answer\": \"Para chegar ao outro reino.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Soldada Comum\",
+				\"text\": \"Você é mesmo inteligente. Tá aqui a chave...\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Soldada Comum\",
+				\"text\": \"Errou cabeção. Quem sabe na próxima.\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldada Comum\",
+			\"text\": \"E aí recruta! Está perdido?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Talvez...\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Soldada Comum\",
+			\"text\": \"Ah, então vou te ajudar. A sala do general é aquela com uma porta enorme.\"
+		}
+	]
+}"
+npc_name = "Soldada Comum"
+id = "Soldada Comum"
+textureHead = ExtResource("14_b64vv")
+textureBody = ExtResource("14_b64vv")
+
+[node name="Npc6" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(207, -106)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Senior\",
+			\"text\": \"Olá, meu jovem. A que devo essa inesperada visita ao santuário?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Me desculpe incomodá-lo senhor, mas preciso de uma chave.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Senior\",
+			\"text\": \"Entendo, está em uma missão? Mas será que é a pessoa certa para essa missão?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Como posso descobrir se sou a pessoa certa?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Senior\",
+			\"text\": \"Olhe para dentro de si e me responda isto.\"
+		},
+		{
+			\"npc_id\": \"Sacerdote Senior\",
+			\"type\": \"question\",
+			\"speaker_name\": \"Sacerdote Senior\",
+			\"question\": \"O que você considera mais importante?\",
+			\"options\": [
+				\"Fazer o que é certo mesmo em meio ao caos.\",
+				\"Ser reconhecido por grandes feitos.\",
+				\"Ser rico e famoso.\"
+			],
+			\"correct_answer\": \"Fazer o que é certo mesmo em meio ao caos.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Sacerdote Senior\",
+				\"text\": \"Você é a pessoa certa. Pegue esta chave e siga seu caminho.\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"Sacerdote Senior\",
+				\"text\": \"Talvez você não seja a pessoa certa. Reflita um pouco.\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Senior\",
+			\"text\": \"Chegou ao fim da sua missão?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Estou quase lá.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Sacerdote Senior\",
+			\"text\": \"Ótimo. Mande lembranças ao general por mim.\"
+		}
+	]
+}"
+npc_name = "Sacerdote Senior"
+id = "Sacerdote Senior"
+textureHead = ExtResource("16_2pad8")
+textureBody = ExtResource("16_2pad8")
+
+[node name="Npc7" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(302, 199)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"A gata\",
+			\"text\": \"Miau miau miau.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"iti gatinha! Me dê essa chave, por favor.\"
+		},
+		{
+			\"npc_id\": \"A gata\",
+			\"type\": \"question\",
+			\"speaker_name\": \"A gata\",
+			\"question\": \"Miau miau miau miau miau?\",
+			\"options\": [
+				\"pspspspspsps.\",
+				\"pspspspspsps.\",
+				\"pspspspspsps.\"
+			],
+			\"correct_answer\": \"pspspspspsps.\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"A gata\",
+				\"text\": \"Miaaaaaauuuu!\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"A gata\",
+				\"text\": \"Miau...\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"A gata\",
+			\"text\": \"Miau?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"pspsps!\"
+		}
+	]
+}"
+npc_name = "A gata"
+id = "A gata"
+textureHead = ExtResource("18_x70b3")
+textureBody = ExtResource("18_x70b3")
+
+[node name="Npc8" parent="." instance=ExtResource("4_rm3lh")]
+position = Vector2(511, -704)
+motion_mode = 1
+dialogue_file = "{
+	\"Question_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"O General\",
+			\"text\": \"O que faz aqui recruta? Está sala é restrita a militares de alta patente e sacerdotes.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Preciso falar com o senhor, senhor. O rei me mandou aqui para recuperar o currículo de Honras do lendário guerreiro Thiago Yure.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"O General\",
+			\"text\": \"E porque eu deveria confiar essa missão a você, um simples recruta?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Com todo respeito senhor, mas um simples recruta teria chegado até aqui?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"O General\",
+			\"text\": \"Você está a um passo de ser preso, mas tem sorte que eu gosto de comandados com atitude. Tudo bem, mas preciso que me responda algo antes.\"
+		},
+		{
+			\"npc_id\": \"O General\",
+			\"type\": \"question\",
+			\"speaker_name\": \"O General\",
+			\"question\": \"O que faz um grande guerreiro?\",
+			\"options\": [
+				\"A capacidade de se defender sozinho.\",
+				\"A habilidade de luta dele.\",
+				\"A capacidade de defender aos seus companheiros e aqueles que ama...\"
+			],
+			\"correct_answer\": \"A capacidade de defender aos seus companheiros e aqueles que ama...\",
+			\"if_right\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"O General\",
+				\"text\": \"Você está certíssimo! Vá até a estátua atrás de mim. As informações estão gravadas nela.\"
+			},
+			\"if_wrong\": {
+				\"type\": \"text\",
+				\"speaker_name\": \"O General\",
+				\"text\": \"Pense melhor...\"
+			}
+		}
+	],
+	\"Default_dialogue\": [
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"O General\",
+			\"text\": \"Conseguiu o que procurava?\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"Você\",
+			\"text\": \"Ainda não.\"
+		},
+		{
+			\"type\": \"text\",
+			\"speaker_name\": \"O General\",
+			\"text\": \"Então se apresse. E não se esqueça de devolver as chaves na saída.\"
+		}
+	]
+}"
+npc_name = "O General"
+id = "O General"
+textureHead = ExtResource("20_1bdwf")
+textureBody = ExtResource("20_1bdwf")
+
+[node name="NotificationBox" parent="." instance=ExtResource("21_30fn3")]
+visible = true
+
+[node name="Hud" parent="." instance=ExtResource("22_dgldv")]

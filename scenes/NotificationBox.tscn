@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8ov0unx3uohn"]
+
+[ext_resource type="Script" uid="uid://by0eb8k6557lq" path="res://scripts/NotificationBox.gd" id="1_1na41"]
+[ext_resource type="Texture2D" uid="uid://dmci4kwoojb2k" path="res://assets/UI/Map01.png" id="1_hjy2d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cikn4"]
+bg_color = Color(0.0627451, 0.0784314, 0.0862745, 0.588235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="NotificationBox" type="CanvasLayer"]
+script = ExtResource("1_1na41")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.199
+anchor_right = 0.951
+anchor_bottom = 0.395
+offset_left = 0.199951
+offset_top = 0.167984
+offset_right = -0.280029
+offset_bottom = -0.360016
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_cikn4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -49.0
+offset_right = 101.5
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/VBoxContainer"]
+position = Vector2(98.5, 19)
+scale = Vector2(2.83333, 2.83333)
+texture = ExtResource("1_hjy2d")
+region_enabled = true
+region_rect = Rect2(72.97, 299.949, 17.0281, 8.93185)
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "Parabéns!
+Você ganhou uma chave!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

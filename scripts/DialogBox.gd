@@ -31,6 +31,7 @@ func show_dialogue(dialogue_data : Array):
 	question_line = {}
 	current_choice_index = 0
 	lines = dialogue_data.duplicate()
+	emit_signal("dialogue_started")
 	show()
 	for item in choice_container.get_children():
 		item.queue_free()
@@ -87,7 +88,7 @@ func _on_char_timer_timeout():
 		can_continue = true
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and buttons.size() == 0:
+	if Input.is_action_just_pressed("ui_accept") and buttons.size() == 0:
 		if is_typing:
 			char_timer.stop()
 			text_label.clear()
@@ -97,18 +98,18 @@ func _unhandled_input(event):
 		elif can_continue:
 			can_continue = false
 			_next_line()
-	elif event.is_action_pressed("ui_accept") and buttons.size() > 0:
+	elif Input.is_action_just_pressed("ui_accept") and buttons.size() > 0:
 		_on_choice_selected(choices_list[current_choice_index], question_line)
 		buttons.clear()
 		choices_list.clear()
 		question_line={}
-	elif buttons.size() > 0 and is_dialogue_active and (event.is_action_pressed("move-down") or event.is_action_pressed("move-up")):
-		if(event.is_action_pressed("move-down")):
+	elif buttons.size() > 0 and is_dialogue_active and (Input.is_action_just_pressed("move-down") or Input.is_action_just_pressed("move-up")):
+		if(Input.is_action_just_pressed("move-down")):
 			if current_choice_index == (buttons.size() - 1):
 				current_choice_index = 0
 			else: current_choice_index += 1
 			att_choices()
-		elif(event.is_action_pressed("move-up")):
+		elif(Input.is_action_just_pressed("move-up")):
 			if current_choice_index == 0:
 				current_choice_index = (buttons.size() - 1)
 			else: current_choice_index -= 1
@@ -125,8 +126,8 @@ func _on_choice_selected(choice, line):
 	var correct_answer = line.get("correct_answer")
 	if choice == correct_answer:
 		lines.push_front(line.get("if_right"))
-		emit_signal("question_answered_right", line.get("npc_id"))
 		_next_line()
+		emit_signal("question_answered_right", line.get("npc_id"))
 	else : 
 		lines.push_front(line.get("if_wrong"))
 		_next_line()
