@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5a51rfdcv6lu"]
+[gd_scene load_steps=6 format=3 uid="uid://b5a51rfdcv6lu"]
 
 [ext_resource type="Script" uid="uid://b23ykbo6wu5v6" path="res://scripts/Door.gd" id="1_eyv6f"]
 [ext_resource type="Texture2D" uid="uid://bv0b1hg16yvi4" path="res://assets/map/32.png" id="1_yfgsh"]
+[ext_resource type="AudioStream" uid="uid://dc82tes877xbs" path="res://assets/audio/SFX/locking door - sound effect.mp3" id="3_mg2as"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfgsh"]
 size = Vector2(32, 10)
@@ -36,3 +37,7 @@ shape = SubResource("RectangleShape2D_yfgsh")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractiveArea"]
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_eyv6f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mg2as")
+volume_db = -1.0

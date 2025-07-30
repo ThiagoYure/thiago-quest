@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cskeek485a1wc"]
+[gd_scene load_steps=16 format=3 uid="uid://cskeek485a1wc"]
 
 [ext_resource type="Script" uid="uid://bqv1rhhxf1mi8" path="res://scripts/player.gd" id="1_p0vlq"]
 [ext_resource type="Texture2D" uid="uid://cjwy80h514qkv" path="res://assets/player/Soldier 03-1.png" id="2_v6fml"]
+[ext_resource type="AudioStream" uid="uid://5xgkhd6rj11r" path="res://assets/audio/SFX/Garry's Mod Walking Sounds.mp3" id="3_mdl7e"]
+[ext_resource type="AudioStream" uid="uid://dmree5c5ykhr2" path="res://assets/audio/music/Kevin MacLeod - 8bit Dungeon Level ♫ NO COPYRIGHT 8-bit Music.mp3" id="4_qu4a1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
 size = Vector2(22, 16)
@@ -194,3 +196,12 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mdl7e")
+volume_db = -1.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qu4a1")
+volume_db = -1.0
+autoplay = true

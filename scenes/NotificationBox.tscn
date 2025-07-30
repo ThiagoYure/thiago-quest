@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8ov0unx3uohn"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ov0unx3uohn"]
 
 [ext_resource type="Script" uid="uid://by0eb8k6557lq" path="res://scripts/NotificationBox.gd" id="1_1na41"]
 [ext_resource type="Texture2D" uid="uid://dmci4kwoojb2k" path="res://assets/UI/Map01.png" id="1_hjy2d"]
+[ext_resource type="AudioStream" uid="uid://b6rei3i2u63op" path="res://assets/audio/SFX/sound1.wav" id="3_m75p8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cikn4"]
 bg_color = Color(0.0627451, 0.0784314, 0.0862745, 0.588235)
@@ -63,3 +64,7 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m75p8")
+volume_db = -1.0

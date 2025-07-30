@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmree5c5ykhr2"
+path="res://.godot/imported/Kevin MacLeod - 8bit Dungeon Level ♫ NO COPYRIGHT 8-bit Music.mp3-44ae36be0239a97085356d05757a9e5c.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Kevin MacLeod - 8bit Dungeon Level ♫ NO COPYRIGHT 8-bit Music.mp3"
+dest_files=["res://.godot/imported/Kevin MacLeod - 8bit Dungeon Level ♫ NO COPYRIGHT 8-bit Music.mp3-44ae36be0239a97085356d05757a9e5c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

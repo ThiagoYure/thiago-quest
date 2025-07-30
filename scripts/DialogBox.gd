@@ -32,6 +32,7 @@ func show_dialogue(dialogue_data : Array):
 	current_choice_index = 0
 	lines = dialogue_data.duplicate()
 	emit_signal("dialogue_started")
+	$AudioStreamPlayer2D.play()
 	show()
 	for item in choice_container.get_children():
 		item.queue_free()

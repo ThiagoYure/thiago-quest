@@ -6,6 +6,7 @@ func _ready():
 
 func show_notification():
 	show()
+	$AudioStreamPlayer2D.play()
 	$Timer.start()
 
 func _on_char_timer_timeout():

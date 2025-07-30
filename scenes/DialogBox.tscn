@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3exrn787pboi"]
+[gd_scene load_steps=5 format=3 uid="uid://b3exrn787pboi"]
 
 [ext_resource type="Script" uid="uid://yavexvkvwa1w" path="res://scripts/DialogBox.gd" id="1_bqexh"]
 [ext_resource type="FontFile" uid="uid://in5t6vmjxp4x" path="res://assets/fonts/Pixel Emulator.otf" id="2_0tcfv"]
+[ext_resource type="AudioStream" uid="uid://bpbfuq2w7lc15" path="res://assets/audio/SFX/sound6.wav" id="3_lb7il"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lb7il"]
 font = ExtResource("2_0tcfv")
@@ -59,3 +60,7 @@ visible = false
 layout_mode = 2
 
 [node name="CharTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lb7il")
+volume_db = -1.0

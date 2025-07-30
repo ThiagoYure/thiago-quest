@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 var last_direction: String = "down"
 var can_move := true
+var is_walking := false
 
 func _ready() -> void:
 	var dialogue_box = get_tree().current_scene.get_node("DialogBox")
@@ -37,6 +38,9 @@ func move_player(delta):
 
 func update_animation(direction: Vector2):
 	if direction != Vector2.ZERO:
+		is_walking = true
+		$AudioStreamPlayer2D.stream_paused = false
+		$AudioStreamPlayer2D.play()
 		if abs(direction.x) > abs(direction.y):
 			if direction.x > 0:
 				play_animation("walking-right")
@@ -52,6 +56,8 @@ func update_animation(direction: Vector2):
 				play_animation("walking-up")
 				last_direction = "up"
 	else:
+		$AudioStreamPlayer2D.stream_paused = true
+		is_walking = false
 		play_animation("idle-" + last_direction)
 
 func play_animation(name: String):
@@ -60,6 +66,7 @@ func play_animation(name: String):
 
 func _on_dialogue_started():
 	can_move = false
+	$AudioStreamPlayer2D.stream_paused = true
 	animation_player.stop()
 
 func _on_dialogue_finished():
