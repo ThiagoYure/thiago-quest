@@ -6,8 +6,10 @@ extends CharacterBody2D
 var last_direction: String = "down"
 var can_move := true
 var is_walking := false
+var mobile_controls
 
 func _ready() -> void:
+	mobile_controls = get_tree().current_scene.get_node("MobileControl")
 	var dialogue_box = get_tree().current_scene.get_node("DialogBox")
 	if dialogue_box:
 		dialogue_box.dialogue_started.connect(_on_dialogue_started)
@@ -20,16 +22,18 @@ func _physics_process(delta: float) -> void:
 
 func move_player(delta):
 	var direction = Vector2.ZERO
-
-	if Input.is_action_pressed("move-up"):
-		direction.y -= 1
-	if Input.is_action_pressed("move-down"):
-		direction.y += 1
-	if Input.is_action_pressed("move-left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move-right"):
-		direction.x += 1
-
+	if mobile_controls.is_mobile_browser():
+		direction = mobile_controls.get_direction()
+	else:
+		if Input.is_action_pressed("move-up"):
+			direction.y -= 1
+		if Input.is_action_pressed("move-down"):
+			direction.y += 1
+		if Input.is_action_pressed("move-left"):
+			direction.x -= 1
+		if Input.is_action_pressed("move-right"):
+			direction.x += 1
+			
 	direction = direction.normalized()
 	velocity = direction * speed
 	move_and_slide()
@@ -39,8 +43,6 @@ func move_player(delta):
 func update_animation(direction: Vector2):
 	if direction != Vector2.ZERO:
 		is_walking = true
-		$AudioStreamPlayer2D.stream_paused = false
-		$AudioStreamPlayer2D.play()
 		if abs(direction.x) > abs(direction.y):
 			if direction.x > 0:
 				play_animation("walking-right")
@@ -56,7 +58,6 @@ func update_animation(direction: Vector2):
 				play_animation("walking-up")
 				last_direction = "up"
 	else:
-		$AudioStreamPlayer2D.stream_paused = true
 		is_walking = false
 		play_animation("idle-" + last_direction)
 
@@ -66,7 +67,6 @@ func play_animation(name: String):
 
 func _on_dialogue_started():
 	can_move = false
-	$AudioStreamPlayer2D.stream_paused = true
 	animation_player.stop()
 
 func _on_dialogue_finished():

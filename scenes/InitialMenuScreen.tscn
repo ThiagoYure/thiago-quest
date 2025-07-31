@@ -64,3 +64,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Iniciar Jogo"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.189844
+anchor_top = 0.833333
+anchor_right = 0.913281
+anchor_bottom = 0.889323
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "\"W\", \"A\", \"S\", \"D\" or Setas para andar e selecionar opções para respostas
+
+\"E\" para interagir
+
+\"Enter\" para ir para a próxima fala"

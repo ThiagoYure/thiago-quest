@@ -13,10 +13,13 @@ var player_in_range := false
 var dialogue_active = false
 var question_answered = false
 var notificated:=false
+var mobile_controls
+
 @onready var dialogue_box = get_tree().current_scene.get_node("DialogBox")
 @onready var notification_box = get_tree().current_scene.get_node("NotificationBox")
 
 func _ready():
+	mobile_controls = get_tree().current_scene.get_node("MobileControl")
 	$InteractionArea.body_entered.connect(_on_body_entered)
 	$InteractionArea.body_exited.connect(_on_body_exited)
 	_parse_dialogue()
@@ -56,7 +59,7 @@ func _on_dialogue_started():
 
 func _on_dialogue_finished():
 	dialogue_active = false
-	if question_answered and not notificated:
+	if question_answered and not notificated and not npc_name == "O General":
 		notificated = true
 		notification_box.show_notification()
 
@@ -81,7 +84,7 @@ func turn_to_player(player_dir: String):
 
 
 func _process(_delta):
-	if player_in_range and Input.is_action_just_pressed("interact") and not dialogue_active:
+	if player_in_range and (Input.is_action_just_pressed("interact") or mobile_controls.action_pressed()) and not dialogue_active:
 		turn_to_player(get_tree().current_scene.get_node("Player").get_last_direction())
 		if dialogue_box and not dialogue_box.visible:
 			dialogue_active = true

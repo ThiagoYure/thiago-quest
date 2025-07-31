@@ -12,6 +12,7 @@ var current_choice_index:=0
 var buttons: Array = []
 var choices_list: Array = []
 var question_line:={}
+var mobile_controls
 signal dialogue_started
 signal dialogue_finished
 signal question_answered_right(npc_id: String)
@@ -22,6 +23,7 @@ signal question_answered_right(npc_id: String)
 @onready var choice_container = $Panel/VBoxContainer/ChoiceContainer
 
 func _ready():
+	mobile_controls = get_tree().current_scene.get_node("MobileControl")
 	hide()
 	char_timer.timeout.connect(_on_char_timer_timeout)
 
@@ -32,7 +34,7 @@ func show_dialogue(dialogue_data : Array):
 	current_choice_index = 0
 	lines = dialogue_data.duplicate()
 	emit_signal("dialogue_started")
-	$AudioStreamPlayer2D.play()
+	AudioManager.play_sfx("res://assets/audio/SFX/sound6.wav")
 	show()
 	for item in choice_container.get_children():
 		item.queue_free()
@@ -54,7 +56,6 @@ func _next_line():
 		displayed_text = ""
 		char_index = 0
 		text_label.clear()
-		text_label.append_text(current_text)
 		is_typing = true
 		char_timer.start(char_speed)
 	elif line.get("type") == "question":
@@ -89,7 +90,8 @@ func _on_char_timer_timeout():
 		can_continue = true
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("ui_accept") and buttons.size() == 0:
+	var dir_name = mobile_controls.get_direction_name(mobile_controls.get_direction())
+	if (Input.is_action_just_pressed("ui_accept") or mobile_controls.enter_pressed()) and buttons.size() == 0:
 		if is_typing:
 			char_timer.stop()
 			text_label.clear()
@@ -99,18 +101,18 @@ func _unhandled_input(event):
 		elif can_continue:
 			can_continue = false
 			_next_line()
-	elif Input.is_action_just_pressed("ui_accept") and buttons.size() > 0:
+	elif (Input.is_action_just_pressed("ui_accept") or mobile_controls.enter_pressed()) and buttons.size() > 0:
 		_on_choice_selected(choices_list[current_choice_index], question_line)
 		buttons.clear()
 		choices_list.clear()
 		question_line={}
-	elif buttons.size() > 0 and is_dialogue_active and (Input.is_action_just_pressed("move-down") or Input.is_action_just_pressed("move-up")):
-		if(Input.is_action_just_pressed("move-down")):
+	elif buttons.size() > 0 and is_dialogue_active and (Input.is_action_just_pressed("move-down") or Input.is_action_just_pressed("move-up") or dir_name == "move-up" or dir_name == "move-down"):
+		if(Input.is_action_just_pressed("move-down") or dir_name == "move-down"):
 			if current_choice_index == (buttons.size() - 1):
 				current_choice_index = 0
 			else: current_choice_index += 1
 			att_choices()
-		elif(Input.is_action_just_pressed("move-up")):
+		elif(Input.is_action_just_pressed("move-up") or dir_name == "move-up"):
 			if current_choice_index == 0:
 				current_choice_index = (buttons.size() - 1)
 			else: current_choice_index -= 1

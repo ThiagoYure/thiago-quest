@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdehx3op20hkc"]
+
+[ext_resource type="Script" uid="uid://cjks8tvf0bi8e" path="res://scripts/MobileControl.gd" id="1_k5mtk"]
+[ext_resource type="Texture2D" uid="uid://7q6f7m78062u" path="res://assets/UI/joystick-base.png" id="2_7uwaw"]
+[ext_resource type="Texture2D" uid="uid://bihtust8klp72" path="res://assets/UI/joystick-button.png" id="3_gul5t"]
+[ext_resource type="Texture2D" uid="uid://dyq3ln6toi4hp" path="res://assets/UI/action-mobile-button.png" id="4_yg486"]
+[ext_resource type="Texture2D" uid="uid://248kvvffalw7" path="res://assets/UI/enter-mobile-button.png" id="5_0l6h6"]
+[ext_resource type="Texture2D" uid="uid://naoygurdp67x" path="res://assets/UI/action-mobile-button-hovered.png" id="5_in87a"]
+[ext_resource type="Texture2D" uid="uid://smvb3bxp6u8x" path="res://assets/UI/enter-mobile-button-hovered.png" id="7_2aho5"]
+
+[node name="MobileControl" type="CanvasLayer"]
+script = ExtResource("1_k5mtk")
+
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+pivot_offset = Vector2(640, 384)
+
+[node name="JoystickBase" type="TextureRect" parent="UIRoot"]
+z_index = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = 0.764
+anchor_right = 0.152
+anchor_bottom = 0.895
+offset_left = 74.0
+offset_top = 611.0
+offset_right = 174.0
+offset_bottom = 711.0
+pivot_offset = Vector2(50, 50)
+mouse_filter = 2
+texture = ExtResource("2_7uwaw")
+stretch_mode = 2
+
+[node name="JoystickKnob" type="TextureRect" parent="UIRoot/JoystickBase"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277
+anchor_top = 0.287
+anchor_right = 0.713
+anchor_bottom = 0.723
+offset_left = 0.0229988
+offset_top = 0.0130005
+offset_right = -0.0130081
+offset_bottom = -0.0230026
+pivot_offset = Vector2(22, 22)
+mouse_filter = 2
+texture = ExtResource("3_gul5t")
+stretch_mode = 2
+
+[node name="ActionButton" type="TextureButton" parent="UIRoot"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1084.0
+offset_top = 614.0
+offset_right = 1184.0
+offset_bottom = 714.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_yg486")
+texture_pressed = ExtResource("5_in87a")
+
+[node name="EnterButton" type="TextureButton" parent="UIRoot"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1083.0
+offset_top = 479.0
+offset_right = 1183.0
+offset_bottom = 579.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_0l6h6")
+texture_pressed = ExtResource("7_2aho5")

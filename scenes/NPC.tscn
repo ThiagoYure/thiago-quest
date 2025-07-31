@@ -44,5 +44,3 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ktgr7")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

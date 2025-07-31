@@ -35,10 +35,12 @@ grow_vertical = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -64,6 +66,19 @@ text = "Behance"
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Finalizar jogo ->"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Fonte: https://www.pixelsagas.com/
+Audio: -
+	BGM: Kevin MacLeod - 8bit Dungeon Level ♫ NO COPYRIGHT 8-bit Music
+	SFX: - creatorassets.com
+Sprites: -
+	PIPOYA FREE RPG Character Sprites 32x32
+	Dungeon/Temple tileset by AppleDog
+	Dungeon Tiles by Rostislav Gnatovsky ( Cardinal Zebra )"
+fit_content = true
+vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

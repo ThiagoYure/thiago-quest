@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	AudioManager.play_bgm("res://assets/audio/music/Kevin MacLeod - 8bit Dungeon Level ♫ NO COPYRIGHT 8-bit Music.mp3")
 	$Button.pressed.connect(_on_button_pressed)
 	
 

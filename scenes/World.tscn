@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://84n008bojk3w"]
+[gd_scene load_steps=16 format=3 uid="uid://84n008bojk3w"]
 
 [ext_resource type="PackedScene" uid="uid://b83m10tss7muy" path="res://scenes/Mapa.tscn" id="1_dwmkc"]
 [ext_resource type="PackedScene" uid="uid://cskeek485a1wc" path="res://scenes/Player.tscn" id="2_30fn3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dktwekgmj1gmj" path="res://assets/NPC/Male 02-3.png" id="10_aqlsr"]
 [ext_resource type="Texture2D" uid="uid://b782ikghy51qa" path="res://assets/NPC/Male 05-2.png" id="12_128ka"]
 [ext_resource type="Texture2D" uid="uid://fal6lmgfkaju" path="res://assets/NPC/Female 02-3.png" id="14_b64vv"]
+[ext_resource type="PackedScene" uid="uid://cdehx3op20hkc" path="res://scenes/MobileControl.tscn" id="15_c0d7e"]
 [ext_resource type="Texture2D" uid="uid://diyfvkrt4i8bf" path="res://assets/NPC/Male 07-1.png" id="16_2pad8"]
 [ext_resource type="Texture2D" uid="uid://tvo27k6qe3ja" path="res://assets/NPC/Cat-01-2r.png" id="18_x70b3"]
 [ext_resource type="Texture2D" uid="uid://1cq5sebifm7f" path="res://assets/NPC/Soldier 07-1.png" id="20_1bdwf"]
@@ -594,6 +595,8 @@ textureHead = ExtResource("20_1bdwf")
 textureBody = ExtResource("20_1bdwf")
 
 [node name="NotificationBox" parent="." instance=ExtResource("21_30fn3")]
-visible = true
 
 [node name="Hud" parent="." instance=ExtResource("22_dgldv")]
+
+[node name="MobileControl" parent="." instance=ExtResource("15_c0d7e")]
+visible = false

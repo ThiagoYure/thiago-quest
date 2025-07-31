@@ -6,7 +6,7 @@ func _ready():
 
 func show_notification():
 	show()
-	$AudioStreamPlayer2D.play()
+	AudioManager.play_sfx("res://assets/audio/SFX/sound1.wav")
 	$Timer.start()
 
 func _on_char_timer_timeout():

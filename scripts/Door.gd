@@ -5,10 +5,12 @@ var dialogue_dict: Dictionary
 var dialogue_lines: Array
 var dialogue_active := false
 var player_in_range := false
+var mobile_controls
 
 @onready var dialogue_box = get_tree().current_scene.get_node("DialogBox")
 
 func _ready() -> void:
+	mobile_controls = get_tree().current_scene.get_node("MobileControl")
 	$InteractiveArea.body_entered.connect(_on_body_entered)
 	$InteractiveArea.body_exited.connect(_on_body_exited)
 	_parse_dialogue()
@@ -40,9 +42,8 @@ func _on_body_exited(body):
 		player_in_range = false
 
 func _process(_delta):
-	if player_in_range and Input.is_action_just_pressed("interact"):
+	if player_in_range and (Input.is_action_just_pressed("interact") or mobile_controls.action_pressed()):
 		if GameState.key_parts == 7 :
-			$AudioStreamPlayer2D.play()
 			queue_free()
 		elif dialogue_box and not dialogue_active and not dialogue_box.visible:
 			_load_dialogue("Default_dialogue")
